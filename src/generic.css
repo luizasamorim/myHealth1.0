@@ -39,11 +39,24 @@ body{
     font-size: 16px;
 }
 
-
-/*  testing   */
-.teste{
-    width: 80%;
+.form-file-button-color{
+    color: blueviolet;
 }
-.teste2{
-    width: 10%;
+
+.btn, .nav-pills .nav-link, .modal-content{
+    border-radius: 0;
+}
+
+#btn-excluir{
+    position: absolute;
+    right: 5px;
+    top: 70px;
+}
+
+.modal-dialog{
+    width: 30%;
+}
+
+.modal button{
+    width: 100px;
 }
