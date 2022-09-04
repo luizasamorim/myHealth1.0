@@ -11,10 +11,10 @@
     <title>Criar conta</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index/index.html">
-                <img src="../../assets/vaccine.png" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="../../assets/vaccine.png" height="24" class="d-inline-block align-text-top">
                 MyHealth
             </a>
         </div>
@@ -24,48 +24,60 @@
         <div class="d-flex justify-content-center align-items-center">
             <form> <!--form-->
                 <!--nome completo-->
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome completo</label>
-                    <input type="text" id="nome" class="form-control" placeholder="Fulano de tal" required>
+                <div class="mb-3 form-group row">
+                    <label for="nome" class="col-form-label col-3 text-end">Nome completo</label>
+                    <div class="col-9">
+                        <input type="text" id="nome" class=" form-control" placeholder="Fulano de tal" required>
+                    </div>
                 </div>
                 <!--sexo-->
-                <div class="mb-3">
-                    <label class="form-label">Sexo</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="masculino" value="masculino">
-                        <label class="form-check-label" for="masculino">Masculino</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="feminino" value="feminino">
-                        <label class="form-check-label" for="feminino">Feminino</label>
+                <div class="mb-3 form-group row">
+                    <label class="col-form-label col-3 text-end">Sexo</label>
+                    <div class="col-9">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sexo" id="masculino" value="masculino">
+                            <label class="form-check-label" for="masculino">Masculino</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="sexo" id="feminino" value="feminino">
+                            <label class="form-check-label" for="feminino">Feminino</label>
+                        </div>
                     </div>
                 </div>
                 <!--data de nascimento-->
-                <div class="mb-3">
-                    <label for="nascimento" class="form-label">Data de nascimento</label>
-                    <input type="date" class="form-control form-inli" id="nascimento" required>
+                <div class="mb-3 form-group row">
+                    <label for="nascimento" class="col-form-label col-3 text-end">Data de nascimento</label>
+                    <div class="col-9">
+                        <input type="date" class="form-control form-inli" id="nascimento" required>
+                    </div>
                 </div>
                 <!--email-->
-                <div class="mb-3"> 
-                    <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                <div class="mb-3 form-group row"> 
+                    <label for="email" class="col-form-label col-3 text-end">Email</label>
+                    <div class="col-9">
+                        <input type="email" class="form-control text-primary" id="email" aria-describedby="emailHelp" required>
+                    </div>
                 </div>
                 <!--senha-->
-                <div class="mb-3">
-                    <label for="password" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="password" required>
+                <div class="mb-3 form-group row">
+                    <label for="password" class="col-form-label col-3 text-end">Senha</label>
+                    <div class="col-9">
+                        <input type="password" class="form-control" id="password" required>
+                    </div>
                 </div>
                 <!--repetir senha-->
-                <div class="mb-3">
-                    <label for="password2" class="form-label">Repetir senha</label>
-                    <input oninput="setCustomValidity(password.value != password2.value ? 'Senha não confere!' : '')" type="password" class="form-control" id="password2" required>
+                <div class="mb-3 form-group row">
+                    <label for="password2" class="col-form-label col-3 text-end">Repetir senha</label>
+                    <div class="col-9">
+                        <input oninput="setCustomValidity(password.value != password2.value ? 'Senha não confere!' : '')" type="password" class="form-control" id="password2" required>
+                    </div>
                 </div>
                 <div class="invalid-feedback">
                     Senha não confere!
                 </div>
                 <!--botão-->
-                <div class="d-flex justify-content-center">
-                    <button onclick="criarConta()" type="submit" class="btn btn-success">Cadastrar</button>
+                <div class="d-flex justify-content-center mt-5">
+                    <button onsubmit="criarConta()" type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
               </form>
         </div>

@@ -11,14 +11,14 @@
     <title>Home</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index/index.html">
-                <img src="../../assets/vaccine.png" width="30" height="24" class="d-inline-block align-text-top">
+                <img src="../../assets/vaccine.png" height="24" class="d-inline-block align-text-top">
                 MyHealth
               </a>
             <div class="" id="navbarNav">
-                <ul class="nav nav-pills ">
+                <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Minhas vacinas</a>
                     </li>
@@ -30,139 +30,185 @@
         </div>
     </nav>
 
-    <div class="container border border-primary">
-        <div class="container m-3 mb-5">
-            <form class="d-flex" role="search">
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-                        &#128269
-                    </span>
-                    <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="PESQUISAR VACINA...">
-                </div>
-            </form>
-        </div>
+    <div class="container d-flex justify-content-center">
+        <form id="search">
+            <div class="input-group mt-4 mb-5">
+                <span class="input-group-text">
+                    <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+                    &#128269
+                </span>
+                <input type="text" class="form-control" placeholder="PESQUISAR VACINA...">
+            </div>
+        </form>
+    </div>
 
-        <div class="">
+    
 
-            <!-- <div class="teste2 border border-dark"></div> -->
-            
-            <div class="d-inline-flex flex-wrap gap-5">
+    <div class="container d-flex justify-content-center">
+    
+        <div class="card-container row">
 
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body align-content-center pb-0 pt-1">
-                        <div class="card-title text-primary text-center mb-0">
-                            <div>
-                                Vacina
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <span class="card-text text-light bg-primary ps-1 pe-1">
-                                Dose única
-                            </span>
-                        </div>
-                        <div class="card-text text-center text-muted">
-                            10/10/2010
-                        </div>
-                        <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
-                        <div class="card-text d-flex justify-content-end text-danger">
-                            Próxima dose 10/10/2022.
+            <div onclick="editarVacina(1)" class="card col-xl-3 col-lg-4 col-md-6 mb-4" style="width: 18rem;">
+                <div class="card-body align-content-center pb-0 pt-1">
+                    <div class="card-title text-primary text-center mb-0">
+                        <div>
+                            Vacina
                         </div>
                     </div>
-                </div>
-                <div class="card mb-3" style="width: 18rem;">
-                    <div class="card-body align-content-center pb-0 pt-1">
-                        <div class="card-title text-primary text-center mb-0">
-                            <div>
-                                Vacina
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <span class="card-text text-light bg-primary ps-1 pe-1">
-                                Dose única
-                            </span>
-                        </div>
-                        <div class="card-text text-center text-muted">
-                            10/10/2010
-                        </div>
-                        <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
-                        <div class="card-text d-flex justify-content-end text-danger">
-                            Próxima dose 10/10/2022.
-                        </div>
+                    <div class="text-center">
+                        <span class="card-text text-light bg-primary ps-1 pe-1">
+                            Dose única
+                        </span>
                     </div>
-                </div>
-                <div class="card mb-3" style="width: 18rem;">
-                    <div class="card-body align-content-center pb-0 pt-1">
-                        <div class="card-title text-primary text-center mb-0">
-                            <div>
-                                Vacina
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <span class="card-text text-light bg-primary ps-1 pe-1">
-                                Dose única
-                            </span>
-                        </div>
-                        <div class="card-text text-center text-muted">
-                            10/10/2010
-                        </div>
-                        <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
-                        <div class="card-text d-flex justify-content-end text-danger">
-                            Próxima dose 10/10/2022.
-                        </div>
+                    <div class="card-text text-center text-muted">
+                        10/10/2010
                     </div>
-                </div>
-                <div class="card mb-3" style="width: 18rem;">
-                    <div class="card-body align-content-center pb-0 pt-1">
-                        <div class="card-title text-primary text-center mb-0">
-                            <div>
-                                Vacina
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <span class="card-text text-light bg-primary ps-1 pe-1">
-                                Dose única
-                            </span>
-                        </div>
-                        <div class="card-text text-center text-muted">
-                            10/10/2010
-                        </div>
-                        <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
-                        <div class="card-text d-flex justify-content-end text-danger">
-                            Próxima dose 10/10/2022.
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3" style="width: 18rem;">
-                    <div class="card-body align-content-center pb-0 pt-1">
-                        <div class="card-title text-primary text-center mb-0">
-                            <div>
-                                Vacina
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <span class="card-text text-light bg-primary ps-1 pe-1">
-                                Dose única
-                            </span>
-                        </div>
-                        <div class="card-text text-center text-muted">
-                            10/10/2010
-                        </div>
-                        <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
-                        <div class="card-text d-flex justify-content-end text-danger">
-                            Próxima dose 10/10/2022.
-                        </div>
+                    <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
+                    <div class="card-text d-flex justify-content-end text-danger">
+                        Próxima dose 10/10/2022.
                     </div>
                 </div>
             </div>
 
-            <!-- <div class="teste2 border border-dark"></div> -->
+            <div onclick="editarVacina(1)" class="card col-xl-3 col-lg-4 col-md-6 mb-4" style="width: 18rem;">
+                <div class="card-body align-content-center pb-0 pt-1">
+                    <div class="card-title text-primary text-center mb-0">
+                        <div>
+                            Vacina
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="card-text text-light bg-primary ps-1 pe-1">
+                            Dose única
+                        </span>
+                    </div>
+                    <div class="card-text text-center text-muted">
+                        10/10/2010
+                    </div>
+                    <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
+                    <div class="card-text d-flex justify-content-end text-danger">
+                        Próxima dose 10/10/2022.
+                    </div>
+                </div>
+            </div>
 
-            <!--botão-->
-            <div class="d-flex justify-content-center mt-2 mb-4">
-                <button onclick="novaVacina()" type="submit" class="btn btn-success">Nova vacina</button>
-            </div>  
-        </div>
+            <div onclick="editarVacina(1)" class="card col-xl-3 col-lg-4 col-md-6 mb-4" style="width: 18rem;">
+                <div class="card-body align-content-center pb-0 pt-1">
+                    <div class="card-title text-primary text-center mb-0">
+                        <div>
+                            Vacina
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="card-text text-light bg-primary ps-1 pe-1">
+                            Dose única
+                        </span>
+                    </div>
+                    <div class="card-text text-center text-muted">
+                        10/10/2010
+                    </div>
+                    <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
+                    <div class="card-text d-flex justify-content-end text-danger">
+                        Próxima dose 10/10/2022.
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="editarVacina(1)" class="card col-xl-3 col-lg-4 col-md-6 mb-4" style="width: 18rem;">
+                <div class="card-body align-content-center pb-0 pt-1">
+                    <div class="card-title text-primary text-center mb-0">
+                        <div>
+                            Vacina
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="card-text text-light bg-primary ps-1 pe-1">
+                            Dose única
+                        </span>
+                    </div>
+                    <div class="card-text text-center text-muted">
+                        10/10/2010
+                    </div>
+                    <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
+                    <div class="card-text d-flex justify-content-end text-danger">
+                        Próxima dose 10/10/2022.
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="editarVacina(1)" class="card col-xl-3 col-lg-4 col-md-6 mb-4" style="width: 18rem;">
+                <div class="card-body align-content-center pb-0 pt-1">
+                    <div class="card-title text-primary text-center mb-0">
+                        <div>
+                            Vacina
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="card-text text-light bg-primary ps-1 pe-1">
+                            Dose única
+                        </span>
+                    </div>
+                    <div class="card-text text-center text-muted">
+                        10/10/2010
+                    </div>
+                    <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
+                    <div class="card-text d-flex justify-content-end text-danger">
+                        Próxima dose 10/10/2022.
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="editarVacina(1)" class="card col-xl-3 col-lg-4 col-md-6 mb-4" style="width: 18rem;">
+                <div class="card-body align-content-center pb-0 pt-1">
+                    <div class="card-title text-primary text-center mb-0">
+                        <div>
+                            Vacina
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="card-text text-light bg-primary ps-1 pe-1">
+                            Dose única
+                        </span>
+                    </div>
+                    <div class="card-text text-center text-muted">
+                        10/10/2010
+                    </div>
+                    <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
+                    <div class="card-text d-flex justify-content-end text-danger">
+                        Próxima dose 10/10/2022.
+                    </div>
+                </div>
+            </div>
+
+            <div onclick="editarVacina(1)" class="card col-xl-3 col-lg-4 col-md-6 mb-4" style="width: 18rem;">
+                <div class="card-body align-content-center pb-0 pt-1">
+                    <div class="card-title text-primary text-center mb-0">
+                        <div>
+                            Vacina
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="card-text text-light bg-primary ps-1 pe-1">
+                            Dose única
+                        </span>
+                    </div>
+                    <div class="card-text text-center text-muted">
+                        10/10/2010
+                    </div>
+                    <img src="../../assets/body-bg.jfif" class="card-img mt-2 mb-3 img">
+                    <div class="card-text d-flex justify-content-end text-danger">
+                        Próxima dose 10/10/2022.
+                    </div>
+                </div>
+            </div>
+        </div>  
     </div>
+
+    <!--botão-->
+    <div class="d-flex justify-content-center mt-2 mb-4">
+        <div>
+            <button onclick="novaVacina()" type="submit" class="btn btn-success">Nova vacina</button>
+        </div>
+    </div>  
 </body>
 </html>

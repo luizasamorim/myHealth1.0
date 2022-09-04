@@ -1,9 +1,12 @@
 function excluirVacina() {
-    
+    window.location = '../home/home.html' 
 }
 
 function editarVacina() {
     
+
+
+    window.location = '../home/home.html' 
 }
 
 /*
