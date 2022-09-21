@@ -1,24 +1,27 @@
 function novaVacina() {
-    
-}
-/*
-function preview(){
-    alert('call')
-    var imagem = document.getElementById('comprovante').files
-    var preview = document.getElementById('preview')
-    
-    var reader = new FileReader();
-    
-    reader.onloadend = function () {
-        preview.src = reader.result;
+    var dataAtual = document.getElementById('dataAtual').value
+    var vacina = document.getElementById('vacina').value
+    var dataProxima = document.getElementById('dataProxima').value
+    var comprovante = '' /*document.getElementById('comprovante').value*/
+    var dose = ''
+    document.getElementsByName('dose').forEach(element => {
+        if (element.checked) {
+            dose = element.value
+        }
+    });
+
+    if (!localStorage.getItem('vacinas')) {
+        localStorage.setItem('vacinas', '[]')
     }
+
+    vacinas = JSON.parse(localStorage.getItem('vacinas'))
+    var id = vacinas.length
     
-    if(imagem){
-        alert('aaaa')
-        reader.readAsDataURL(imagem);
-    }else{
-        alert('bbbbb')
-        preview.src = "";
-    }
+    var vacina = {'id': id, 'dataAtual': dataAtual, 'vacina': vacina, 'dose': dose, 'comprovante': comprovante, 'dataProxima': dataProxima}
+
+    vacinas.push(vacina)
+
+    localStorage.setItem('vacinas', JSON.stringify(vacinas))
+
+    window.location = '../home/home.html'
 }
-*/
