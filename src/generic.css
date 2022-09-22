@@ -36,6 +36,9 @@ body{
 form{
     width: 750px;
 }
+.entrada-invalida{
+    display: none;
+}
 
 /* cores de textos e botões */
 input{
@@ -68,6 +71,7 @@ input{
 /* imagens */
 .img{
     height: 150px;
+    max-width: 300px;
 }
 
  /* borda 0 */
@@ -97,6 +101,9 @@ form a, form a:hover{
 /* home */
 #search{
     width: 1200px;
+}
+.card{
+    width: 18rem !important;
 }
 .card-container{
     width: 1000px;

@@ -27,22 +27,23 @@
             <div class="mb-3 form-group row form-group row"> 
                 <label for="email" class="col-form-label col-3 text-end">Email</label>
                 <div class="col-9">
-                    <input type="email" class="form-control text-primary text-primary" id="email" aria-describedby="emailHelp" required>
+                    <input type="email" class="form-control text-primary text-primary" id="email" aria-describedby="emailHelp">
                 </div>
             </div>
             <!--senha-->
             <div class="mb-3 form-group row">
                 <label for="password" class="col-form-label col-3 text-end">Senha</label>
                 <div class="col-9">
-                    <input type="password" class="form-control" id="password" required>
+                    <input type="password" class="form-control" id="password">
                 </div>
             </div>
-            <div class="invalid-feedback">
+            <!-- entradas inválidas -->
+            <div class="entrada-invalida text-danger text-center">
                 E-mail e/ou senha inválidos!
             </div> 
             <!--botão-->
             <div class="d-flex justify-content-center mt-5">
-                <button onclick="entrar()" type="submit" class="btn btn-success">Entrar</button>
+                <button onclick="entrar()" type="button" class="btn btn-success">Entrar</button>
             </div>
         </form>
     </div>

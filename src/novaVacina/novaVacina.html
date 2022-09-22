@@ -34,54 +34,68 @@
         <div class="d-flex justify-content-center align-items-center">
             <form> <!--form-->
                 <!--data da vacinação-->
-                <div class="mb-3">
-                    <label for="dataAtual" class="form-label">Data da vacinação</label>
-                    <input type="date" class="form-control" id="dataAtual" required>
+                <div class="mb-3 form-group row">
+                    <label for="dataAtual" class="col-form-label col-3 text-end">Data da vacinação</label>
+                    <div class="col-9">
+                        <input type="date" class="form-control" id="dataAtual">
+                    </div>
                 </div>
                 <!--vacina-->
-                <div class="mb-3">
-                    <label for="vacina" class="form-label">Vacina</label>
-                    <input type="text" id="vacina" class="form-control" placeholder="Hepatite..." required>
+                <div class="mb-3 form-group row">
+                    <label for="vacina" class="col-form-label col-3 text-end">Vacina</label>
+                    <div class="col-9">
+                        <input type="text" id="vacina" class="form-control" placeholder="Hepatite...">
+                    </div>
                 </div>
                 <!--dose-->
-                <div class="mb-3">
-                    <label class="form-label">Dose</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="dose" id="dose1" value="dose1">
-                        <label class="form-check-label" for="dose1">1a. dose</label>
+                <div class="mb-3 form-group row">
+                    <label class="col-form-label col-3 text-end">Dose</label>
+                    <div class="col-9">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dose" id="dose1" value="dose1">
+                            <label class="form-check-label" for="dose1">1a. dose</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dose" id="dose2" value="dose2">
+                            <label class="form-check-label" for="dose2">2a. dose</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dose" id="dose3" value="dose3">
+                            <label class="form-check-label" for="dose3">3a. dose</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dose" id="doseR" value="doseR">
+                            <label class="form-check-label" for="doseR">Reforço</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="dose" id="doseU" value="doseU">
+                            <label class="form-check-label" for="doseU">Dose Única</label>
+                        </div>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="dose" id="dose2" value="dose2">
-                        <label class="form-check-label" for="dose2">2a. dose</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="dose" id="dose3" value="dose3">
-                        <label class="form-check-label" for="dose3">3a. dose</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="dose" id="doseR" value="doseR">
-                        <label class="form-check-label" for="doseR">Reforço</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="dose" id="doseU" value="doseU">
-                        <label class="form-check-label" for="doseU">Dose Única</label>
-                    </div>
+                    
                 </div>
 
                 <!-- Comprovante da vacina -->
-                <div class="mb-3">
-                    <label for="comprovante" class="form-label">Comprovante da vacina</label>
-                    <input onchange="preview()" class="form-control" type="file" id="comprovante">
-                    <img id="preview" class="img mt-1">
+                <div class="mb-3 form-group row">
+                    <label for="comprovante" class="col-form-label col-3 text-end">Comprovante da vacina</label>
+                    <div class="col-9">
+                        <input onchange="preview()" class="form-control opacity-0 position-absolute" type="file" id="comprovante">
+                        <input type="button" value="Selecionar imagem..." class="btn btn-primary text-white">
+                        <!-- <button>Selecionar imagem...</button> -->
+                    </div>
+                    <div class="col-3"></div>
+                    <img src="../../assets/comprovante.jfif" id="preview" class="img mt-1 col-9">
                 </div>
                 <!--próxima vacinação-->
-                <div class="mb-3">
-                    <label for="dataProxima" class="form-label">Próxima vacinação</label>
-                    <input type="date" class="form-control" id="dataProxima" required>
+                <div class="mb-3 form-group row">
+                    <label for="dataProxima" class="col-form-label col-3 text-end">Próxima vacinação</label>
+                    <div class="col-9">
+                        <input type="date" class="form-control" id="dataProxima">
+                    </div>
                 </div>
                 <!--botão-->
                 <div class="d-flex justify-content-center">
-                    <button onclick="novaVacina()" type="submit" class="btn btn-success">Cadastrar</button>
+                    <button onclick="novaVacina()" type="button" class="btn btn-success">Cadastrar</button>
                 </div>
               </form>
         </div>

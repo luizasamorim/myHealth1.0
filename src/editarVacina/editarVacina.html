@@ -32,7 +32,7 @@
 
     <!-- Button trigger modal -->
     <div>
-        <button onclick="" id="btn-excluir" class="btn btn-danger position-absolute" type="submit"  data-bs-toggle="modal" data-bs-target="#excluirModal">&#128465 Excluir</button>
+        <button id="btn-excluir" class="btn btn-danger position-absolute" type="submit"  data-bs-toggle="modal" data-bs-target="#excluirModal">&#128465 Excluir</button>
     </div>
 
     
@@ -66,14 +66,14 @@
                 <div class="mb-3 form-group row">
                     <label for="dataAtual" class="col-form-label col-3 text-end">Data da vacinação</label>
                     <div class="col-9">
-                        <input type="date" class="form-control" id="dataAtual" required>
+                        <input type="date" class="form-control" id="dataAtual">
                     </div>
                 </div>
                 <!--vacina-->
                 <div class="mb-3 form-group row">
                     <label for="vacina" class="col-form-label col-3 text-end">Vacina</label>
                     <div class="col-9">
-                        <input type="text" id="vacina" class="form-control" placeholder="Hepatite..." required>
+                        <input type="text" id="vacina" class="form-control" placeholder="Hepatite...">
                     </div>
                 </div>
                 <!--dose-->
@@ -108,20 +108,23 @@
                 <div class="mb-3 form-group row">
                     <label for="comprovante" class="col-form-label col-3 text-end">Comprovante da vacina</label>
                     <div class="col-9">
-                        <input onchange="preview()" class="form-control" type="file" id="comprovante">
+                        <input onchange="preview()" class="form-control opacity-0 position-absolute" type="file" id="comprovante">
+                        <input type="button" value="Selecionar imagem..." class="btn btn-primary text-white">
+                        <!-- <button>Selecionar imagem...</button> -->
                     </div>
-                    <img id="preview" class="img mt-1">
+                    <div class="col-3"></div>
+                    <img src="../../assets/comprovante.jfif" id="preview" class="img mt-1 col-9">
                 </div>
                 <!--próxima vacinação-->
                 <div class="mb-3 form-group row">
                     <label for="dataProxima" class="col-form-label col-3 text-end">Próxima vacinação</label>
                     <div class="col-9">
-                        <input type="date" class="form-control" id="dataProxima" required>
+                        <input type="date" class="form-control" id="dataProxima">
                     </div>
                 </div>
                 <!--botão-->
                 <div class="d-flex justify-content-center mt-5">
-                    <button onclick="editarVacina()" type="submit" class="btn btn-success">Salvar alterações</button>
+                    <button onclick="editarVacina()" type="button" class="btn btn-success">Salvar alterações</button>
                 </div>
               </form>
         </div>
