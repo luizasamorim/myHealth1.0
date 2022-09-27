@@ -1,8 +1,6 @@
 function entrar() {
     var email = document.getElementById('email').value
     var password = document.getElementById('password').value
-    var counter1 = 0;
-    counter2 = 0;
 
     usuarios = JSON.parse(localStorage.getItem('usuarios'))
     debugger

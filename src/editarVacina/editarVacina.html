@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../index/index.html">
+            <a class="navbar-brand text-primary fs-4" href="../index/index.html">
                 <img src="../../assets/vaccine.png" height="24" class="d-inline-block align-text-top">
                 MyHealth
               </a>
@@ -81,23 +81,23 @@
                     <label class="col-form-label col-3 text-end">Dose</label>
                     <div class="col-9">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dose" id="dose1" value="dose1">
+                            <input class="form-check-input" type="radio" name="dose" id="dose1" value="1a. dose">
                             <label class="form-check-label" for="dose1">1a. dose</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dose" id="dose2" value="dose2">
+                            <input class="form-check-input" type="radio" name="dose" id="dose2" value="2a. dose">
                             <label class="form-check-label" for="dose2">2a. dose</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dose" id="dose3" value="dose3">
+                            <input class="form-check-input" type="radio" name="dose" id="dose3" value="3a. dose">
                             <label class="form-check-label" for="dose3">3a. dose</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dose" id="doseR" value="doseR">
+                            <input class="form-check-input" type="radio" name="dose" id="doseR" value="Reforço">
                             <label class="form-check-label" for="doseR">Reforço</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="dose" id="doseU" value="doseU">
+                            <input class="form-check-input" type="radio" name="dose" id="doseU" value="Dose Única">
                             <label class="form-check-label" for="doseU">Dose Única</label>
                         </div>
                     </div>
@@ -121,6 +121,10 @@
                     <div class="col-9">
                         <input type="date" class="form-control" id="dataProxima">
                     </div>
+                </div>
+                <!-- erro -->
+                <div id="erro" class="entrada-invalida text-danger text-center">
+                    
                 </div>
                 <!--botão-->
                 <div class="d-flex justify-content-center mt-5">

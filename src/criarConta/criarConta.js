@@ -1,10 +1,21 @@
+var nome
+var nascimento
+var email
+var password
+var password2
+var sexo
+var erro
+
 function criarConta() {
-    var nome = document.getElementById('nome').value
-    var nascimento = document.getElementById('nascimento').value
-    var email = document.getElementById('email').value
-    var password = document.getElementById('password').value
-    var password2 = document.getElementById('password2').value
-    var sexo = ''
+    erro = document.getElementById('erro')
+    erro.classList.add('entrada-invalida')
+
+    nome = document.getElementById('nome').value
+    nascimento = document.getElementById('nascimento').value
+    email = document.getElementById('email').value
+    password = document.getElementById('password').value
+    password2 = document.getElementById('password2').value
+    sexo = ''
     document.getElementsByName('sexo').forEach(element => {
         if (element.checked) {
             sexo = element.value
@@ -15,7 +26,7 @@ function criarConta() {
         localStorage.setItem('usuarios', '[]')
     }
     
-    if (validaEmail(email) == true && password == password2) {
+    if (validaCampos()) {
         usuarios = JSON.parse(localStorage.getItem('usuarios'))
     
         var usuario = {'nome': nome, 'sexo': sexo, 'nascimento': nascimento, 'email': email, 'password': password}
@@ -26,8 +37,7 @@ function criarConta() {
 
         window.location = '../home/home.html'
     }else{
-        var element = document.getElementsByClassName('entrada-invalida')
-        element[0].classList.remove('entrada-invalida')  
+        erro.classList.remove('entrada-invalida') 
     }
 }
 
@@ -51,28 +61,15 @@ function validaEmail(field) {
     }
 }
 
-
-
-
-
-
-// var element = document.getElementsByClassName('entrada-invalida')
-    // if (!nome) {
-    //     element[0].innerHTML = 'O nome deve ser preenchido!'
-    //     element[0].classList.remove('entrada-invalida')
-    // } else if (!sexo){
-    //     element[0].innerHTML = 'O sexo deve ser preenchido!'
-    //     element[0].classList.remove('entrada-invalida')
-    // } else if (!nascimento){
-    //     element[0].innerHTML = 'O nascimento deve ser preenchido!'
-    //     element[0].classList.remove('entrada-invalida')
-    // } else if (!email || !validaEmail()){
-    //     element[0].innerHTML = 'O email deve ser preenchido corretamente!'
-    //     element[0].classList.remove('entrada-invalida')
-    // } else if (!password){
-    //     element[0].innerHTML = 'A senha deve ser preenchida!'
-    //     element[0].classList.remove('entrada-invalida')
-    // } else if (!password2){
-    //     element[0].innerHTML = 'A confirmação de senha deve ser preenchida!'
-    //     element[0].classList.remove('entrada-invalida')
-    // }
+function validaCampos() {
+    if (!nome || !sexo || !nascimento || !email || !password || !password2) {
+        erro.innerHTML = 'Nenhum campo pode ficar em branco!'
+        return false
+    } else if (!validaEmail(email)) {
+        erro.innerHTML = 'Email inválido!'
+        return false
+    } else if (password != password2) {
+        erro.innerHTML = 'Senha não confere!'
+        return false
+    } else return true
+}
