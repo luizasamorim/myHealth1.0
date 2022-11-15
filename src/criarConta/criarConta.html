@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Averia+Libre">
     <link rel="stylesheet" type="text/css" href="../generic.css">
     <link rel="icon" type="imagem/png" href="../../assets/vaccine.png" />
-    <script src="criarConta.js"></script>
+    <script type="module" src="criarConta.js"></script>
     <meta charset="UTF-8">
     <title>Criar conta</title>
 </head>
@@ -27,7 +27,7 @@
                 <div class="mb-3 form-group row">
                     <label for="nome" class="col-form-label col-3 text-end">Nome completo</label>
                     <div class="col-9">
-                        <input type="text" id="nome" class=" form-control" placeholder="Fulano de tal">
+                        <input type="text" id="nome" class=" form-control" placeholder="Fulano de tal" value="luiza">
                     </div>
                 </div>
                 <!--sexo-->
@@ -35,7 +35,7 @@
                     <label class="col-form-label col-3 text-end">Sexo</label>
                     <div class="col-9">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="sexo" id="masculino" value="masculino">
+                            <input class="form-check-input" type="radio" name="sexo" id="masculino" value="masculino" checked>
                             <label class="form-check-label" for="masculino">Masculino</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -48,28 +48,28 @@
                 <div class="mb-3 form-group row">
                     <label for="nascimento" class="col-form-label col-3 text-end">Data de nascimento</label>
                     <div class="col-9">
-                        <input type="date" class="form-control form-inli" id="nascimento">
+                        <input type="date" class="form-control form-inli" id="nascimento" value="2000-12-28">
                     </div>
                 </div>
                 <!--email-->
                 <div class="mb-3 form-group row"> 
                     <label for="email" class="col-form-label col-3 text-end">Email</label>
                     <div class="col-9">
-                        <input type="email" class="form-control text-primary" id="email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control text-primary" id="email" aria-describedby="emailHelp" value="luiza@luiza.luiza">
                     </div>
                 </div>
                 <!--senha-->
                 <div class="mb-3 form-group row">
                     <label for="password" class="col-form-label col-3 text-end">Senha</label>
                     <div class="col-9">
-                        <input type="password" class="form-control" id="password">
+                        <input type="password" class="form-control" id="password" value="asdasd">
                     </div>
                 </div>
                 <!--repetir senha-->
                 <div class="mb-3 form-group row">
                     <label for="password2" class="col-form-label col-3 text-end">Repetir senha</label>
                     <div class="col-9">
-                        <input type="password" class="form-control" id="password2">
+                        <input type="password" class="form-control" id="password2" value="asdasd">
                     </div>
                 </div>
                 <!-- erro -->
@@ -78,7 +78,9 @@
                 </div>
                 <!--botão-->
                 <div class="d-flex justify-content-center mt-5">
-                    <button onclick="criarConta()" type="button" class="btn btn-success">Cadastrar</button>
+                    <span id="btnCadastrar" class="btn btn-success">Cadastrar</span>
+                    <div id="spinner" class="spinner-border spinner-border-sm entrada-invalida"></div>
+                    <!-- <button id="btnCadastrar" class="btn btn-success">Cadastrar</button> -->
                 </div>
               </form>
         </div>

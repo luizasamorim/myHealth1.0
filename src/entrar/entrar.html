@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Averia+Libre">
     <link rel="stylesheet" type="text/css" href="../generic.css">
     <link rel="icon" type="imagem/png" href="../../assets/vaccine.png" />
-    <script src="entrar.js"></script>
+    <script type="module" src="entrar.js"></script>
     <meta charset="UTF-8">
     <title>Entrar</title>
 </head>
@@ -38,12 +38,13 @@
                 </div>
             </div>
             <!-- entradas inválidas -->
-            <div class="entrada-invalida text-danger text-center">
+            <div id="erro" class="entrada-invalida text-danger text-center">
                 E-mail e/ou senha inválidos!
             </div> 
             <!--botão-->
             <div class="d-flex justify-content-center mt-5">
-                <button onclick="entrar()" type="button" class="btn btn-success">Entrar</button>
+                <span id="btnEntrar" class="btn btn-success">Entrar</span>
+                <div id="spinner" class="spinner-border spinner-border-sm entrada-invalida"></div>
             </div>
         </form>
     </div>

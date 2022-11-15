@@ -1,49 +1,100 @@
-var nome
-var nascimento
-var email
-var password
-var password2
-var sexo
-var erro
+// importações
+import { auth, db } from '../../config/firebase.js'
+import { addDoc, collection } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 
-function criarConta() {
-    erro = document.getElementById('erro')
-    erro.classList.add('entrada-invalida')
+//getters e setters
+const getNome = () => {
+    return document.getElementById('nome').value
+} 
 
-    nome = document.getElementById('nome').value
-    nascimento = document.getElementById('nascimento').value
-    email = document.getElementById('email').value
-    password = document.getElementById('password').value
-    password2 = document.getElementById('password2').value
-    sexo = ''
-    document.getElementsByName('sexo').forEach(element => {
+const getSexo = () => {
+    var sexo = undefined
+    document.getElementsByName('sexo').forEach((element) => {
         if (element.checked) {
             sexo = element.value
         }
     });
+    return sexo
+} 
 
-    if (!localStorage.getItem('usuarios')) {
-        localStorage.setItem('usuarios', '[]')
-    }
-    
-    if (validaCampos()) {
-        usuarios = JSON.parse(localStorage.getItem('usuarios'))
-    
-        var usuario = {'nome': nome, 'sexo': sexo, 'nascimento': nascimento, 'email': email, 'password': password}
+const getNascimento = () => {
+    return document.getElementById('nascimento').value
+} 
 
-        usuarios.push(usuario)
+const getEmail = () => {
+    return document.getElementById('email').value
+} 
 
-        localStorage.setItem('usuarios', JSON.stringify(usuarios))
+const getSenha = () => {
+    return document.getElementById('password').value
+} 
 
-        window.location = '../home/home.html'
-    }else{
-        erro.classList.remove('entrada-invalida') 
-    }
+const getConfirmacao = () => {
+    return document.getElementById('password2').value
+} 
+
+// recuperar elementos
+const erro = () => {
+    return document.getElementById('erro')
 }
 
+const spinner = () => {
+    return document.getElementById('spinner')
+}
+
+const btn = () => {
+    return document.getElementById('btnCadastrar')
+}
+
+// funções
+const cadastrar = () => {
+    erro().classList.add('entrada-invalida')
+    btn().classList.add('entrada-invalida')
+    spinner().classList.remove('entrada-invalida')
+
+    if (validaCampos()) {
+        const email = getEmail()
+        const senha = getSenha()
+
+        createUserWithEmailAndPassword(auth, email, senha)
+        .then((user) => {
+            console.log(JSON.stringify(user.user.uid))
+            addDoc(collection(db, "usuarios"), {
+                id: user.user.uid,
+                nome: getNome(),
+                sexo: getSexo(),
+                nascimento: getNascimento()
+            })
+            .then((document) => {
+                console.log(document);
+                console.log('deu bom');
+                // window.location.href = "../home/home.html"
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        })
+        .catch((error) => {
+            console.log(error.code)
+            if(error.code === "auth/email-already-in-use"){
+    	        erro().innerHTML = 'Já existe usuário com este e-mail!'
+            } else {
+                console.log('aaaaaa');
+            }
+        })
+        .finally( () => {
+            spinner().classList.add('entrada-invalida')
+            btn().classList.remove('entrada-invalida')
+        })
+        
+    }
+    
+} 
+
 function validaEmail(field) {
-    usuario = field.substring(0, field.indexOf("@"));
-    dominio = field.substring(field.indexOf("@")+ 1, field.length);
+    let usuario = field.substring(0, field.indexOf("@"));
+    let dominio = field.substring(field.indexOf("@")+ 1, field.length);
     
     if ((usuario.length >=1) &&
         (dominio.length >=3) &&
@@ -61,15 +112,22 @@ function validaEmail(field) {
     }
 }
 
-function validaCampos() {
-    if (!nome || !sexo || !nascimento || !email || !password || !password2) {
-        erro.innerHTML = 'Nenhum campo pode ficar em branco!'
+function validaCampos() {    
+    if (!getNome() || !getSexo() || !getNascimento() || !getEmail() || !getSenha() || !getConfirmacao()) {
+        erro().innerHTML = 'Nenhum campo pode ficar em branco!'
         return false
-    } else if (!validaEmail(email)) {
-        erro.innerHTML = 'Email inválido!'
+    } else if (!validaEmail(getEmail())) {
+        erro().innerHTML = 'Email inválido!'
         return false
-    } else if (password != password2) {
-        erro.innerHTML = 'Senha não confere!'
+    } else if (getSenha() != getConfirmacao()) {
+        erro().innerHTML = 'Senha não confere!'
         return false
-    } else return true
+    } else {
+        return true
+    }
+}
+
+// carregamento da pgn
+window.onload = () => {
+    btn().addEventListener('click', () => {cadastrar()})
 }
