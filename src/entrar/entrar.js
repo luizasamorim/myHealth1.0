@@ -1,6 +1,7 @@
 // importações
-import { auth } from '../../config/firebase.js'
+import { db, auth } from '../../config/firebase.js'
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
+import { query, collection, onSnapshot, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
 // getters e setters
 const getEmail = () => {
@@ -34,8 +35,13 @@ const entrar = () => {
 
     signInWithEmailAndPassword(auth, email, senha)
     .then((user) => {
-        console.log(JSON.stringify(user))
-        window.location.href = "../home/home.html"
+        const q = query(collection(db, "usuarios"), where("id", "==", user.user.uid))
+
+        onSnapshot(q, (results) => {
+            results.forEach((documento) => {
+                window.location.href = "../home/home.html?docUserId=" + documento.id
+            })
+        })
     })
     .catch( (error) => {
         console.log(error)

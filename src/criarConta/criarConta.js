@@ -69,18 +69,21 @@ const cadastrar = () => {
             .then((document) => {
                 console.log(document);
                 console.log('deu bom');
-                // window.location.href = "../home/home.html"
+                window.location.href = "../entrar/entrar.html"
             })
             .catch((error) => {
                 console.log(error)
             })
         })
         .catch((error) => {
-            console.log(error.code)
+            console.log(error)
+            erro().classList.remove('entrada-invalida')
             if(error.code === "auth/email-already-in-use"){
     	        erro().innerHTML = 'Já existe usuário com este e-mail!'
+            } else if(error.code === "auth/weak-password"){
+    	        erro().innerHTML = 'A senha deve ter pelo menos 6 caracteres!'
             } else {
-                console.log('aaaaaa');
+                erro().innerHTML = 'Ocorreu um erro!'
             }
         })
         .finally( () => {
@@ -88,6 +91,12 @@ const cadastrar = () => {
             btn().classList.remove('entrada-invalida')
         })
         
+    } else {
+        setTimeout(() => {
+            erro().classList.remove('entrada-invalida')
+            spinner().classList.add('entrada-invalida')
+            btn().classList.remove('entrada-invalida')
+        }, 300);
     }
     
 } 
@@ -113,6 +122,7 @@ function validaEmail(field) {
 }
 
 function validaCampos() {    
+    debugger
     if (!getNome() || !getSexo() || !getNascimento() || !getEmail() || !getSenha() || !getConfirmacao()) {
         erro().innerHTML = 'Nenhum campo pode ficar em branco!'
         return false

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Averia+Libre">
     <link rel="stylesheet" type="text/css" href="../generic.css">
     <link rel="icon" type="imagem/png" href="../../assets/vaccine.png" />
-    <script src="novaVacina.js"></script>
+    <script type="module" src="novaVacina.js"></script>
     <meta charset="UTF-8">
     <title>Nova vacina</title>
 </head>
@@ -20,10 +20,10 @@
             <div class="" id="navbarNav">
                 <ul class="nav nav-pills ">
                     <li class="nav-item">
-                        <a class="nav-link active" href="../home/home.html">Minhas vacinas</a>
+                        <a id="linkHome" class="nav-link active">Minhas vacinas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../index/index.html">Logout</a>
+                        <a id="linkLogout" class="nav-link active">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -84,7 +84,7 @@
                         <!-- <button>Selecionar imagem...</button> -->
                     </div>
                     <div class="col-3"></div>
-                    <img src="../../assets/comprovante.jpg" id="preview" class="img mt-1 col-9">
+                    <img src="" id="preview" class="img mt-1 col-9">
                 </div>
                 <!--próxima vacinação-->
                 <div class="mb-3 form-group row">
@@ -99,7 +99,9 @@
                 </div>
                 <!--botão-->
                 <div class="d-flex justify-content-center mt-5">
-                    <button onclick="novaVacina()" type="button" class="btn btn-success">Cadastrar</button>
+                    <span id="btnCadastrarVacina" class="btn btn-success">Cadastrar</span>
+                    <div id="spinner" class="spinner-border spinner-border-sm entrada-invalida"></div>  
+                    <!-- <button onclick="novaVacina()" type="button" class="btn btn-success">Cadastrar</button> -->
                 </div>
               </form>
         </div>

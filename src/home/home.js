@@ -1,14 +1,26 @@
+// importações
 import {db} from '../../config/firebase.js'
 import {query, collection, onSnapshot, where} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
-        
+
+
+// getters e setters
 const listaVacinas = []
 
-window.onload = function () {
-    carregarVacinas()
+
+// recupera elementos html
+const spinner = () => {
+    return document.getElementById('spinner')
 }
 
-const carregarVacinas = () => {
-    const q = query( collection(db, "vacinas"))
+const btn = () => {
+    return document.getElementById('btnNovaVacina')
+}
+
+
+// funções
+const carregarVacinas = (userId) => {
+    const coll = '/usuarios/' + userId + '/vacinas'
+    const q = query( collection(db, coll))
 
     onSnapshot(q, (results) => {
         results.forEach((documento) => {
@@ -25,25 +37,22 @@ const carregarVacinas = () => {
     })
 }
 
-
-
 function novaVacina() {
-    window.location = '../novaVacina/novaVacina.html'
+    window.location = '../novaVacina/novaVacina.html?docUserId=' + location.search.split('=')[1]
 }
 
 function editarVacina(index) {
-    window.location = '../editarVacina/editarVacina.html?id='+index    
+    window.location = '../editarVacina/editarVacina.html?docUserId='+location.search.split('=')[1]+'&docVacinaId='+index
 }
 
 function listarVacinas(listaVacinas) {
-
-    // var vacinas = JSON.parse(localStorage.getItem("vacinas"))
     
     var lista = document.getElementById("vacinas")
+    lista.innerHTML = null;
     var i = 0;
     
     listaVacinas.forEach(function () {
-        debugger
+        
         var index = listaVacinas[i].id
 
         var card = document.createElement("div")
@@ -99,11 +108,6 @@ function listarVacinas(listaVacinas) {
     });
 }
 
-function dateParsing(date) {
-    var parsed = date.split('-')
-    return parsed[2] + '/' + parsed[1] + '/' + parsed[0]
-}
-
 function search() {
     let input = document.getElementById('search-bar').value
     input = input.toLowerCase();
@@ -118,4 +122,16 @@ function search() {
             x[i].style.listStyleType="none";       
         }
     }
+}
+
+// carregamento da pgn
+window.onload = () => {
+    btn().addEventListener('click', () => {novaVacina()})
+
+    carregarVacinas(location.search.split('=')[1])
+
+    document.getElementById("search-bar").addEventListener('keyup', () => {
+        const searchString = document.getElementById("search-bar").value.trim()
+        listarVacinas(listaVacinas.filter(element => element.vacina.includes(searchString)))
+    })
 }

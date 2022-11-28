@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Averia+Libre">
     <link rel="stylesheet" type="text/css" href="../generic.css">
     <link rel="icon" type="imagem/png" href="../../assets/vaccine.png" />
-    <script src="editarVacina.js"></script>
+    <script type="module" src="editarVacina.js"></script>
     <meta charset="UTF-8">
     <title>Editar vacina</title>
 </head>
@@ -20,10 +20,10 @@
             <div class="" id="navbarNav">
                 <ul class="nav nav-pills ">
                     <li class="nav-item">
-                        <a class="nav-link active" href="../home/home.html">Minhas vacinas</a>
+                        <a id="linkHome" class="nav-link active">Minhas vacinas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../index/index.html">Logout</a>
+                        <a id="linkLogout" class="nav-link active">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -50,7 +50,7 @@
                 Tem certeza que deseja remover essa vacina?
             </div>
             <div class="mb-5">
-                <button onclick="excluirVacina()" type="button" class="btn btn-danger">SIM</button>
+                <button id="btnExcluirVacina" type="button" class="btn btn-danger">SIM</button>
                 <span class="me-5"></span>
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">CANCELAR</button>
             </div>
@@ -108,12 +108,12 @@
                 <div class="mb-3 form-group row">
                     <label for="comprovante" class="col-form-label col-3 text-end">Comprovante da vacina</label>
                     <div class="col-9">
-                        <input onchange="preview()" class="form-control opacity-0 position-absolute" type="file" id="comprovante">
+                        <input class="form-control opacity-0 position-absolute" type="file" id="comprovante">
                         <input type="button" value="Selecionar imagem..." class="btn btn-primary text-white">
                         <!-- <button>Selecionar imagem...</button> -->
                     </div>
                     <div class="col-3"></div>
-                    <img src="../../assets/comprovante.jpg" id="preview" class="img mt-1 col-9">
+                    <img src="" id="preview" class="img mt-1 col-9">
                 </div>
                 <!--próxima vacinação-->
                 <div class="mb-3 form-group row">
@@ -128,7 +128,9 @@
                 </div>
                 <!--botão-->
                 <div class="d-flex justify-content-center mt-5">
-                    <button onclick="editarVacina()" type="button" class="btn btn-success">Salvar alterações</button>
+                    <span id="btnEditarVacina" class="btn btn-success">Salvar alterações</span>
+                    <div id="spinner" class="spinner-border spinner-border-sm entrada-invalida"></div>  
+                    <!-- <button onclick="editarVacina()" type="button" class="btn btn-success">Salvar alterações</button> -->
                 </div>
               </form>
         </div>

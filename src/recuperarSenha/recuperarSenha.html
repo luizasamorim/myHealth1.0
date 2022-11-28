@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Averia+Libre">
     <link rel="stylesheet" type="text/css" href="../generic.css">
     <link rel="icon" type="imagem/png" href="../../assets/vaccine.png" />
-    <script src="recuperarSenha.js"></script>
+    <script type="module" src="recuperarSenha.js"></script>
     <meta charset="UTF-8">
     <title>Recuperar senha</title>
 </head>
@@ -24,10 +24,10 @@
         <div class="d-flex justify-content-center align-items-center">
             <form> <!--form-->
                 <!--email-->
-                <div class="mb-3 form-group row form-group row"> 
+                <div class="mb-3 form-group row"> 
                     <label for="email" class="col-form-label col-3 text-end">Email</label>
                     <div class="col-9">
-                        <input type="email" class="form-control text-primary text-primary" id="email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control text-primary" id="email" aria-describedby="emailHelp">
                     </div>
                 </div>
                 <!-- erro -->
@@ -36,7 +36,8 @@
                 </div>
                 <!--botão-->
                 <div class="d-flex justify-content-center mt-5">
-                    <button onclick="recuperarSenha()" type="button" class="btn btn-success">Redefinir senha</button>
+                    <button id="btnRedefinirSenha" type="button" class="btn btn-success">Redefinir senha</button>
+                    <div id="spinner" class="spinner-border spinner-border-sm entrada-invalida"></div>
                 </div>
               </form>
         </div>
