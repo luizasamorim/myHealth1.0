@@ -1,11 +1,12 @@
 // importações
-import { storage, db } from '../../config/firebase.js'
+import { storage, db, auth } from '../../config/firebase.js'
 import { addDoc, collection, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 import { uploadBytes, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
 
 
 // variaveis globais
 var file = null;
+
 
 //getters e setters
 const getDataAtual = () => {
@@ -59,6 +60,7 @@ const home = () => {
 const logout = () => {
     return document.getElementById('linkLogout')
 }
+
 
 // funções
 const novaVacina = (docUserId) => {
@@ -135,9 +137,32 @@ const gerarUid = () => {
     return id.replace(/\./g, '')
 }
 
+function efetuarLogout() {
+    
+    auth.signOut()
+    .then(function() {
+        console.log('Logout');
+        window.location.href = "../index/index.html"
+    }, function(error) {
+        console.error( error );
+    });    
+}
+
 
 // carregamento da pgn
 window.onload = () => {
+    // verifica se está logado
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+            console.log('logado');
+            console.log(auth.currentUser);
+        } else {
+            console.log('não logado');
+            window.location.href = "../index/index.html"
+        }
+    })
+
+
     btn().addEventListener('click', () => {novaVacina(location.search.split('=')[1])})
     comprovante().addEventListener('change', function (event) {
         file = event.target.files[0]
@@ -146,7 +171,5 @@ window.onload = () => {
     home().addEventListener('click', () => {
         window.location.href = "../home/home.html?docUserId=" + location.search.split('=')[1]
     })
-    logout().addEventListener('click', () => {
-        window.location.href = "../index/index.html"
-    })
+    logout().addEventListener('click', () => {efetuarLogout()})
 }

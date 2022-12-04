@@ -3,6 +3,7 @@ import { db, auth } from '../../config/firebase.js'
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 import { query, collection, onSnapshot, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
+
 // getters e setters
 const getEmail = () => {
     return document.getElementById('email').value
@@ -11,6 +12,7 @@ const getEmail = () => {
 const getSenha = () => {
     return document.getElementById('password').value
 }
+
 
 // recupera elementos html
 const erro = () => {
@@ -25,6 +27,7 @@ const btn = () => {
     return document.getElementById('btnEntrar')
 }
 
+
 // funções
 const entrar = () => {
     const email = getEmail()
@@ -35,6 +38,18 @@ const entrar = () => {
 
     signInWithEmailAndPassword(auth, email, senha)
     .then((user) => {
+        
+
+    //    auth.onAuthStateChanged(function(user) {
+    //     if (user) {
+    //         console.log('logado');
+    //         console.log( user );
+    //     } else {
+    //         console.log('não logado');
+    //     }
+    //     });
+
+
         const q = query(collection(db, "usuarios"), where("id", "==", user.user.uid))
 
         onSnapshot(q, (results) => {
@@ -52,6 +67,7 @@ const entrar = () => {
         btn().classList.remove('entrada-invalida')
     })
 }
+
 
 // carregamento da pgn
 window.onload = () => {

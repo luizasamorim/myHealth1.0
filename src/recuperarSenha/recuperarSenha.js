@@ -2,14 +2,20 @@
 import { auth, db } from '../../config/firebase.js'
 import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 
+
 //getters e setters
 const getEmail = () => {
     return document.getElementById('email').value
 } 
 
+
 // recuperar elementos
 const erro = () => {
     return document.getElementById('erro')
+}
+
+const sucesso = () => {
+    return document.getElementById('sucesso')
 }
 
 const spinner = () => {
@@ -19,6 +25,7 @@ const spinner = () => {
 const btn = () => {
     return document.getElementById('btnRedefinirSenha')
 }
+
 
 // funções
 const redefinirSenha = () => {
@@ -31,6 +38,7 @@ const redefinirSenha = () => {
     sendPasswordResetEmail(auth, email)
     .then(() => {
         console.log('foi');
+        sucesso().classList.remove('entrada-invalida')
     })
     .catch((error) => {
         console.log(error)
@@ -52,37 +60,4 @@ const redefinirSenha = () => {
 // carregamento da pgn
 window.onload = () => {
     btn().addEventListener('click', () => {redefinirSenha()})
-}
-
-
-function recuperarSenha() {
-    var email = document.getElementById('email').value
-    var erro = document.getElementById('erro')
-
-    if (validaEmail(email)) {
-        window.location = '../index/index.html'
-    } else {
-        erro.innerHTML = 'Email inválido!'
-        erro.classList.remove('entrada-invalida')
-    }
-}
-
-function validaEmail(field) {
-    usuario = field.substring(0, field.indexOf("@"));
-    dominio = field.substring(field.indexOf("@")+ 1, field.length);
-    
-    if ((usuario.length >=1) &&
-        (dominio.length >=3) &&
-        (usuario.search("@")==-1) &&
-        (dominio.search("@")==-1) &&
-        (usuario.search(" ")==-1) &&
-        (dominio.search(" ")==-1) &&
-        (dominio.search(".")!=-1) &&
-        (dominio.indexOf(".") >=1)&&
-        (dominio.lastIndexOf(".") < dominio.length - 1)) {
-        return true
-    }
-    else{
-        return false
-    }
 }

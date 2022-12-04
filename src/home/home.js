@@ -1,6 +1,6 @@
 // importações
-import {db} from '../../config/firebase.js'
-import {query, collection, onSnapshot, where} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
+import { db, auth } from '../../config/firebase.js'
+import { query, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
 
 // getters e setters
@@ -14,6 +14,14 @@ const spinner = () => {
 
 const btn = () => {
     return document.getElementById('btnNovaVacina')
+}
+
+const home = () => {
+    return document.getElementById('linkHome')
+}
+
+const logout = () => {
+    return document.getElementById('linkLogout')
 }
 
 
@@ -108,25 +116,36 @@ function listarVacinas(listaVacinas) {
     });
 }
 
-function search() {
-    let input = document.getElementById('search-bar').value
-    input = input.toLowerCase();
-    let x = document.getElementsByClassName('card');
-      
-    for (i = 0; i < x.length; i++) { 
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display="none";
-        }
-        else {
-            x[i].style.display="list-item";
-            x[i].style.listStyleType="none";       
-        }
-    }
+function efetuarLogout() {
+    
+    auth.signOut()
+    .then(function() {
+        console.log('Logout');
+        window.location.href = "../index/index.html"
+    }, function(error) {
+        console.error( error );
+    });    
 }
+
 
 // carregamento da pgn
 window.onload = () => {
+    // verifica se está logado
+    auth.onAuthStateChanged(function(user) {
+        if (auth.currentUser) {
+            console.log('logado');
+            console.log(auth.currentUser);
+        } else {
+            console.log('não logado');
+            window.location.href = "../index/index.html"
+        }
+    })
+
     btn().addEventListener('click', () => {novaVacina()})
+    home().addEventListener('click', () => {
+        window.location.href = "../home/home.html?docUserId=" + location.search.split('=')[1]
+    })
+    logout().addEventListener('click', () => {efetuarLogout()})
 
     carregarVacinas(location.search.split('=')[1])
 

@@ -1,5 +1,5 @@
 // importações
-import { storage, db } from '../../config/firebase.js'
+import { storage, db, auth } from '../../config/firebase.js'
 import { deleteDoc, doc, updateDoc, query, onSnapshot } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 import { uploadBytes, ref, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
 
@@ -8,6 +8,7 @@ import { uploadBytes, ref, getDownloadURL, deleteObject } from "https://www.gsta
 var file = null;
 var pathComprovante = null;
 const urlParams = new URLSearchParams(window.location.search)
+
 
 //getters e setters
 const getDataAtual = () => {
@@ -72,6 +73,7 @@ const setDataProxima = (dataProxima) => {
     document.getElementById('dataProxima').value = dataProxima
 } 
 
+
 // recuperar elementos
 const erro = () => {
     return document.getElementById('erro')
@@ -105,6 +107,7 @@ const logout = () => {
     return document.getElementById('linkLogout')
 }
 
+
 // funções
 const carregarVacina = (docUserId, docVacinaId) => {
     const coll = '/usuarios/' + docUserId + '/vacinas'
@@ -127,7 +130,7 @@ const editarVacina = (docUserId, docVacinaId) => {
     const coll = '/usuarios/' + docUserId + '/vacinas'
 
     erro().classList.add('entrada-invalida')
-    btn().classList.add('entrada-invalida')
+    btnEditar().classList.add('entrada-invalida')
     spinner().classList.remove('entrada-invalida')
 
     if (validaCampos()) {
@@ -149,14 +152,14 @@ const editarVacina = (docUserId, docVacinaId) => {
                         })
                         .then((document) => {
                             console.log('deu bom');
-                            // window.location.href = "../home/home.html?docUserId=" + location.search.split('=')[1]
+                            window.location.href = "../home/home.html?docUserId=" + docUserId
                         })
                         .catch((error) => {
                             console.log(error)
                         })
                         .finally( () => {
                             spinner().classList.add('entrada-invalida')
-                            btn().classList.remove('entrada-invalida')
+                            btnEditar().classList.remove('entrada-invalida')
                         })
                     })
                     .catch((error) => {
@@ -185,7 +188,7 @@ const editarVacina = (docUserId, docVacinaId) => {
             })
             .finally( () => {
                 spinner().classList.add('entrada-invalida')
-                btn().classList.remove('entrada-invalida')
+                btnEditar().classList.remove('entrada-invalida')
             })
                     
         }
@@ -194,7 +197,7 @@ const editarVacina = (docUserId, docVacinaId) => {
         setTimeout(() => {
             erro().classList.remove('entrada-invalida')
             spinner().classList.add('entrada-invalida')
-            btn().classList.remove('entrada-invalida')
+            btnEditar().classList.remove('entrada-invalida')
         }, 300);
     }
 }
@@ -227,9 +230,31 @@ function validaCampos() {
     } else return true
 }
 
+function efetuarLogout() {
+
+    auth.signOut()
+    .then(function() {
+        console.log('Logout');
+        window.location.href = "../index/index.html"
+    }, function(error) {
+        console.error( error );
+    });    
+}
+
 
 // carregamento da pgn
 window.onload = () => {
+    // verifica se está logado
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+            console.log('logado');
+            console.log(auth.currentUser);
+        } else {
+            console.log('não logado');
+            window.location.href = "../index/index.html"
+        }
+    })
+
     carregarVacina(urlParams.get('docUserId'), urlParams.get('docVacinaId'))
 
     btnEditar().addEventListener('click', () => {editarVacina(urlParams.get('docUserId'), urlParams.get('docVacinaId'))})
@@ -243,7 +268,5 @@ window.onload = () => {
     home().addEventListener('click', () => {
         window.location.href = "../home/home.html?docUserId=" + urlParams.get('docUserId')
     })
-    logout().addEventListener('click', () => {
-        window.location.href = "../index/index.html"
-    })
+    logout().addEventListener('click', () => {efetuarLogout()})
 }

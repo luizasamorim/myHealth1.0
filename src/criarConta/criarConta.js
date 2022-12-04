@@ -3,6 +3,7 @@ import { auth, db } from '../../config/firebase.js'
 import { addDoc, collection } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 import {createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 
+
 //getters e setters
 const getNome = () => {
     return document.getElementById('nome').value
@@ -46,6 +47,7 @@ const spinner = () => {
 const btn = () => {
     return document.getElementById('btnCadastrar')
 }
+
 
 // funções
 const cadastrar = () => {
@@ -136,6 +138,7 @@ function validaCampos() {
         return true
     }
 }
+
 
 // carregamento da pgn
 window.onload = () => {
